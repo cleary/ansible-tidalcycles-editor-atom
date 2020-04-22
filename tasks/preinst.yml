@@ -1,0 +1,15 @@
+---
+
+- name: add apt_keys for atom/packagecloud.io repository
+  apt_key:
+    id: DE9E3B09
+    state: present
+    keyserver: "keyserver.ubuntu.com"
+
+- name: add atom/packagecloud.io repository
+  apt_repository:
+    repo: deb https://packagecloud.io/AtomEditor/atom/any/ any main
+    filename: atom.list
+    state: present
+    validate_certs: yes
+    update_cache: yes

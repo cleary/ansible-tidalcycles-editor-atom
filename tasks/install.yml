@@ -1,0 +1,7 @@
+---
+- name: install atom editor
+  apt:
+    state: latest
+    update_cache: yes
+    install_recommends: no
+    name: 'atom'
