@@ -1,5 +1,12 @@
 ---
 
+- name: install dependencies
+  apt:
+    state: latest
+    update_cache: yes
+    install_recommends: no
+    name: 'apt-transport-https'
+
 - name: add apt_keys for atom/packagecloud.io repository
   apt_key:
     id: DE9E3B09
