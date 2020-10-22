@@ -9,6 +9,16 @@
   - name: install tidalcycles atom plugin
     shell: apm install tidalcycles
     when: "not tidatin.stdout is search('tidalcycles')"
+
+  - name: create/replace atom config ~/.atom/config.cson (taking a backup)
+    template:
+      src: templates/config.cson.template
+      dest: "/home/{{ansible_env.SUDO_USER}}/.atom/config.cson"
+      mode: 0640
+      backup: yes
+    tags:
+    - config
+
   become: yes
   become_method: su
   become_user: "{{ansible_env.SUDO_USER}}"
